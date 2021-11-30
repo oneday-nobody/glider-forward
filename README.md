@@ -1,6 +1,7 @@
 # glider-forward
 
-機場白嫖設置文件
+機場白嫖設置文件，呢個説明唔喺要教你點爬牆，而係更安全咁白嫖機場。
+
 
 ## 解決咩問題？
 
@@ -55,7 +56,7 @@ ExitNodes 198.98.49.153,198.98.50.112,198.98.50.162,198.98.52.119,198.98.52.169,
 
 1. verify your tor was listen socks5 proxy port at 9050
 2. download the `glider-forward.conf`
-3. run `glider -listen :8888 -config glider-forward.conf`
+3. run `glider -check 'http://clients3.google.com/generate_204#expect=204' -verbose -listen :8888 -checktimeout=10  -config glider-forward.conf`
 4. set your browser use proxy `http://127.0.0.1:8888`
 5. done
 
