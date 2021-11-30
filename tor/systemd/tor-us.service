@@ -1,0 +1,17 @@
+[Unit]
+Description=Tor service
+Wants=network-online.target
+Requires=docker.service
+After=docker.service network.target network-online.target
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+RestartSec=10s
+ExecStartPre=/usr/bin/docker pull dperson/torproxy
+ExecStart=/usr/bin/docker run --rm --name tor-us -p 9050:9050 -v /etc/tor/torrc-us:/etc/tor/torrc:ro dperson/torproxy
+ExecStop=/usr/bin/docker stop tor-us
+
+[Install]
+WantedBy=multi-user.target
+
